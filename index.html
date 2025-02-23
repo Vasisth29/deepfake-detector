@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepFake Image Detector</title>
+</head>
+<body>
+    <h2>Upload an Image for DeepFake Detection</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if label %}
+        <h3>Prediction: {{ label }}</h3>
+        <p>Confidence Scores: Real - {{ confidence_scores[0]|round(2) }}, Fake - {{ confidence_scores[1]|round(2) }}</p>
+        <img src="{{ chart_path }}" alt="Confidence Chart">
+    {% endif %}
+</body>
+</html>
+
